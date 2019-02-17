@@ -2,15 +2,11 @@
 const API_KEY = 'P159XTK-48K4FCQ-GQB90FR-Y32RP0V';
 
 const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh/api/v1/beers') => {
-    const SHOWS_URL = `${API_URL}`;
     return {
-        createQuote: async (id, text) => {
+        addLike: async (id) => {
             try {
-                const response = await fetch(`${API_URL}/${id}`, {
-                    method: 'GET',
-                    body: JSON.stringify({
-                        quote: text
-                    }),
+                const response = await fetch(`${API_URL}/${id}/like`, {
+                    method: 'POST',
                     headers: {
                         'Content-type': 'application/json',
                         'X-API-KEY': API_KEY
@@ -23,23 +19,6 @@ const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh
                 return quote;
             } catch (e) {
                 console.error(e);
-            }
-        },
-        getShows: async (query) => {
-            try {
-                const requestUrl = query ? `${SEARCH_API_URL}${query}` : SHOWS_URL
-                const response = await fetch(requestUrl);
-                const datos = await response.json();
-                const mapDatos = datos.map((dato) => {
-                    if (dato.show) {
-                        return dato.show;
-                    }
-                    return dato;
-                })
-                return mapDatos;
-            } catch (e) {
-                console.error(e);
-                throw e;
             }
         },
         getBeers: async (query, limit = 10, ) => {
@@ -59,11 +38,17 @@ const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh
                 throw e;
             }
         },
-        getShowsDetail: async (id) => {
+        getBeerDetail: async (id) => {
             try {
-                const response = await fetch(`${SHOWS_URL}/${id}`);
-                const show = await response.json();
-                return show;
+                const response = await fetch(`${API_URL}/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-type': 'application/json',
+                        'X-API-KEY': API_KEY
+                    }
+                });
+                const beer = await response.json();
+                return beer.beer;
             } catch (e) {
                 console.error(e);
                 throw e;

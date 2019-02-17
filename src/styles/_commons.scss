@@ -161,6 +161,8 @@
     .card-header {
   
       padding: 1em;
+
+      font-weight: bold;
   
       h2 {
   
@@ -177,7 +179,6 @@
     .card-content-image img {
   
       width: 100%;
-  
     }
   
     .card-content {
@@ -226,9 +227,7 @@
   
           line-height: 1.3;
   
-          max-height: 80px;
-  
-          overflow-y: auto;
+          max-height: auto;
   
           margin-bottom: 10px;
   
@@ -247,7 +246,12 @@
           bottom: 0;
   
           right: 2em;
-  
+          
+          &.like-container {
+            padding: 0.5em;
+            border-radius: 30px;
+            border: 1px solid $primary-color-text;
+          }
         }
   
       }
@@ -458,21 +462,11 @@
   
   }
   
-  
-  
   .loader {
   
     z-index: 4;
   
-    grid-column: 2 / 3;
-  
-    width: 100vw;
-  
-    height: 100vh;
-  
-    background-color: #0000007a;
-  
-    color: #FFF;
+    color: #0000007a;
   
     font-size: 4.4rem;
   

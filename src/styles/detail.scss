@@ -53,7 +53,7 @@ main {
       font-size: 2rem;
    
     }
-   
+
     p {
    
       margin: 10px;
@@ -128,6 +128,14 @@ main {
    
       margin: 10px 0;
    
+    }
+
+    h2 {
+   
+      font-size: $header-h2;
+
+      font-weight: bold;
+ 
     }
    
     .image-container {
@@ -224,6 +232,19 @@ main {
    
       }
    
+    }
+
+    .like-container {
+      padding: 10px;
+      text-align: right;
+    }
+
+    .like-button {
+      border-radius: 30px;
+      border: 2px $primary-color-dark solid;
+      background-color: $primary-color;
+      color: $primary-color-text;
+      cursor: pointer;
     }
    
    }
