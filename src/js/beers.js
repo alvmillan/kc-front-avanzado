@@ -1,5 +1,4 @@
 import api from './api';
-
 import defaultImg from './../images/default.png';
 
 const { getBeers } = api();
@@ -23,17 +22,21 @@ const templateBeer = ({beerId, name, image, description, likes}) => `
   </div>
 `
 
-const renderShows = (element, beers) => {
-    const htmlBeers = beers
-    .map( beer => templateBeer(beer)).join('');
+const renderShows = (element, beers, year) => {
+    if (year && year.length === 4) {
+      beers = beers.filter(beer => beer.firstBrewed.slice(-4) === year)
+    }
+    const htmlBeers = 
+      beers
+      .map( beer => templateBeer(beer)).join('');
     element.innerHTML = htmlBeers;
 };
 
-export const renderDOMBeers = async (query, limit = 10) => {
+export const renderDOMBeers = async (query, year = null, limit = 10) => {
     try {
         const fetchBeers = await getBeers(query, limit);
         const beerSection = document.getElementById('beer-section');
-        renderShows(beerSection, fetchBeers);
+        renderShows(beerSection, fetchBeers, year);
     } catch (e) {
         console.error(e);
     }

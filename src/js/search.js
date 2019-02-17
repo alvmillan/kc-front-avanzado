@@ -1,11 +1,9 @@
 import { renderDOMBeers } from './beers';
 
-const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('.input.search');
+const searchYear = document.querySelector('.input.search.year');
 
 searchForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    if (searchInput.value !== '') {
-        renderDOMBeers(searchInput.value);
-    }
+    renderDOMBeers(searchInput.value, searchYear.value);    
 })

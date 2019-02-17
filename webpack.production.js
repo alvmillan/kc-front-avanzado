@@ -35,7 +35,8 @@ module.exports = {
                         options: {
                             name: '[name].production.[ext]'
                         }
-                    }
+                    },
+                    
                 ]
             }
         ]
