@@ -1,0 +1,22 @@
+.app-navbar {
+    background-color: $primary-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: 100px;
+    min-height: 55px;
+    z-index: 3;
+    @include tablet {
+        padding: 20px;
+    }
+    a {
+        font-family: 'Pacifico', Verdana;
+        font-size: $logo-font;       
+        color: $primary-color-text;
+    }
+}
